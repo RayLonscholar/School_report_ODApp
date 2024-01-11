@@ -1,0 +1,381 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<CustomSnackbar>:
+    MDIconButton:
+        pos_hint : {'center_y': .5}
+        icon : root.icon
+        opposite_colors : False
+    MDLabel:
+        id : text_bar
+        size_hint_y : None
+        height : self.texture_size[1]
+        text : root.text
+        font_name : "./font/msjh.ttc"
+        font_size : root.font_size
+        theme_text_color : 'Custom'
+        text_color : 'ffffff'
+        shorten : True
+        shorten_from : 'right'
+        pos_hint : {'center_y': .5}
+
+<Setting_Content>:
+    orientation: "vertical"
+    size_hint_y: None
+    size : root.width, root.height
+    spacing : 20
+    MDBoxLayout:
+        adaptive_size : True
+        adaptive_height : True
+        size_hint : (1, .1)
+        MDLabel:
+            size_hint : (.5, 1)
+            text : root.Language_text
+            font_style : "H5"
+            font_name : "./font/msjh.ttc"
+        AnchorLayout:
+            anchor_x : 'center'
+            anchor_y : 'center'
+            MDBoxLayout:
+                id : EN_CH
+                adaptive_size : True
+                spacing : "8dp"
+                adaptive_height : True
+                MDChip:
+                    text : "English"
+                    icon_left : root.EN_selected
+                    icon_check_color : (1, 1, 1, 1)
+                    text_color : (1, 1, 1, 1)
+                    on_press : root.ch_language(self)
+                MDChip:
+                    text : "[font=msjh.ttc]中文[/font]"
+                    icon_left : root.CN_selected
+                    icon_check_color : (1, 1, 1, 1)
+                    text_color : (1, 1, 1, 1)
+                    on_press : root.ch_language(self)
+    MDBoxLayout:
+        adaptive_size : True
+        adaptive_height : True
+        size_hint : (1, .1)
+        MDLabel:
+            size_hint : (.5, 1)
+            text : root.Confidence_text
+            font_style : "H5"
+            font_name : "./font/msjh.ttc"
+        MDSlider:
+            value : root.Confidence_selected
+            min : 1
+            max : 99
+            hint : True
+            hint_bg_color : "lightblue"
+            hint_text_color : "black"
+            track_color_active : "lightblue"
+            track_color_inactive : "red"
+            hint_radius : [6, 0, 6, 0]
+            on_touch_down : root.ch_confidence(self)
+            on_touch_move : root.ch_confidence(self)
+            on_touch_up : root.ch_confidence(self)
+        MDLabel:
+            id : conf_value
+            text : root.Confidence_value
+            size_hint : (.1, 1)
+    MDBoxLayout:
+        adaptive_size : True
+        adaptive_height : True
+        size_hint : (1, .1)
+        MDLabel:
+            size_hint : (.5, 1)
+            text : root.Windowsize_text
+            font_style : "H5"
+            font_name : "./font/msjh.ttc"
+        AnchorLayout:
+            anchor_x : 'center'
+            anchor_y : 'center'
+            MDRectangleFlatButton:
+                id : size_value
+                text : root.Windowsize_selected
+                font_size : "20"
+                line_color : (0, 0, 0, 0)
+                on_release : root.open_window_size(self)
+    MDBoxLayout:
+        adaptive_size : True
+        adaptive_height : True
+        size_hint : (1, .1)
+        MDLabel:
+            size_hint : (.5, 1)
+            text : root.Camera_text
+            font_style : "H5"
+            font_name : "./font/msjh.ttc"
+        AnchorLayout:
+            anchor_x : 'center'
+            anchor_y : 'center'
+            MDRectangleFlatButton:
+                id : camera_value
+                text : root.Camera_selected
+                font_size : "20"
+                font_name : "./font/msjh.ttc"
+                line_color : (0, 0, 0, 0)
+                on_release : root.open_camera_select(self)
+
+<AnimalSwiper>:
+    RelativeLayout:
+        MDSmartTile:
+            id: img
+            radius: 24
+            box_radius: [0, 0, 24, 24]
+            lines: 2
+            box_color: 0.63, 0.63, 0.98, 0.8
+            pos_hint: {"center_x": .5, "center_y": .5}
+            size_hint: 0.6,1
+
+            MagicButton:
+                id: icon
+                icon: "magnify"
+                icon_size: "50sp"
+                pos_hint: {"y": -0.2}
+                on_press : root.open_url()
+
+            MDLabel:
+                id: label
+                text: "MDLabel"
+                font_style: "H3"
+                size_hint_y: None
+                markup: True
+                height: self.texture_size[1]
+                pos_hint: {"center_y": .5}
+
+<ManualSwiper@MagicBehavior+MDSwiperItem>:
+    size_hint: (1, 1)
+    Image:
+        id : img
+
+<Animal@MDSwiper>:
+    id: animal
+    on_swipe:
+        self.get_current_item().wobble()
+        self.get_current_item().twist()
+        self.get_current_item().shake()
+        self.get_current_item().grow()
+
+<Manual@MDSwiper>:
+    id: manual
+    on_swipe:
+        self.get_current_item().grow()
+<MagicButton@MagicBehavior+MDIconButton>
+<TooltipMDIconButton@MDIconButton+MDTooltip>
+
+Mylayout:
+    orientation: 'vertical'
+    size : root.width, root.height
+    ScreenManager:
+        id: screen_manager
+        size_hint : (1, .8)
+        transition : NoTransition()
+        Screen:
+            name: 'screen1'
+            MDBoxLayout:
+                orientation : "vertical"
+                MDFloatLayout:
+                    size_hint : (1, .1)
+                    md_bg_color : (0.63, 0.63, 0.98, 0.8)
+                    MDLabel:
+                        text : "動物辨識系統"
+                        font_style : "H4"
+                        font_name : "./font/msjh.ttc"
+                        halign : "center"
+                        pos_hint: {"center_x": 0.5, "y": 0}
+                    TooltipMDIconButton:
+                        tooltip_text : root.Setting_btn
+                        icon : "cog-outline"
+                        icon_size : "35sp"
+                        pos_hint : {"center_x": 0.97, "center_y": 0.5}
+                        on_release : root.open_setting(self)
+                MDLabel:
+                    id : animal_title
+                    size_hint: (1, .1)
+                    text: root.Animal_title
+                    font_style: "H5"
+                    font_name: "./font/msjh.ttc"
+                MDBoxLayout:
+                    id: change_swiper
+                    size_hint: (1, .8)
+                    
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 0.7, None
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    spacing: 70
+                    adaptive_width: True
+
+                    MDIconButton:
+                        icon: "arrow-left-circle"
+                        icon_size : "70sp"
+                        on_release: root.swipe_left_right("left")
+
+                    TooltipMDIconButton:
+                        id: Manual_btn
+                        tooltip_text : root.Manual_btn
+                        icon: "book-open-blank-variant"
+                        icon_size: "85sp"
+                        tooltip_font_style: "Icon"
+                        shift_y: 50
+                        on_release: root.ch_swipers(self)
+
+                    MDIconButton:
+                        icon: "arrow-right-circle"
+                        icon_size : "70sp"
+                        on_release: root.swipe_left_right("right")
+        Screen:
+            name: 'screen2'
+            MDNavigationLayout:
+                MDScreenManager:
+                    MDScreen:
+                        BoxLayout:
+                            orientation : "vertical"
+                            size : root.width, root.height
+                            BoxLayout:
+                                orientation : "vertical"
+                                padding : 20
+                                BoxLayout:
+                                    orientation : "horizontal"
+                                    size_hint : (1, .1)
+                                    spacing : 10
+                                    MDDropDownItem:
+                                        id : drop_item
+                                        pos_hint: {'center_x': .5, 'center_y': .6}
+                                        text: 'Item'
+                                        on_release: root.open_disks(self)
+                                    MDTextField:
+                                        id : search_path
+                                        hint_text : "Search Path"
+                                    MDIconButton:
+                                        icon: "magnify"
+                                        pos_hint: {"center_x": .5, "center_y": .6}
+                                        on_release: root.search(self)
+
+                                FileChooserListView:    #FileChooserListView
+                                    id : filechooser
+                                    text_color : "black"
+                                    on_entries_cleared : root.show_path(self)
+                                    on_selection : root.selected(filechooser.selection)
+                                    canvas.before:
+                                        Color:
+                                            rgba : (40/255, 40/255, 40/255, 1)
+                                        Rectangle:
+                                            size : self.size 
+                                            pos : (0, 0)
+                                    font_name : "msjh.ttc"
+                MDNavigationDrawer:
+                    id : nav_drawer
+                    radius : (18, 0, 0, 18)
+                    type : "standard"
+                    close_on_click : True
+                    anchor : "right"
+                    BoxLayout:
+                        orientation : "vertical"
+                        Image:
+                            id : my_image
+                            source : ""
+                        MDNavigationDrawerMenu:
+                            MDNavigationDrawerHeader:
+                                id : MDNavigationDrawerHeader
+                                title: "title"
+                                title_color: "#BFD5F3"
+                                spacing: "1dp"
+                                padding: "12dp", 0, 0, "56dp"
+                        MDRectangleFlatButton:
+                            id : Detect
+                            size_hint : (1, .1)
+                            text : root.Detect_btn
+                            text_color : "black"
+                            font_name : "./font/msjh.ttc"
+                            md_bg_color : "lightblue"
+                            on_press : root.ImgOD(self)
+        Screen:
+            name : "screen3"
+            FloatLayout:
+                size : root.width, root.height
+                MDBoxLayout:
+                    orientation : "vertical"
+                    size : root.width, root.height
+                    MDBoxLayout:
+                        orientation : "vertical"
+                        size : root.width, root.height                    
+                        MDBoxLayout:
+                            orientation : "horizontal"
+                            Image:
+                                id : out_detection
+                                size_hint : (.75, 1)
+                                color : (0, 0, 0, 1)
+                            MDBoxLayout:
+                                orientation : "vertical"
+                                size_hint : (.25, 1)
+                                MDLabel:
+                                    size_hint : (1, .1)
+                                    id : List_title
+                                    text : ""
+                                    font_style : "H5"
+                                    halign : "center"
+                                    md_bg_color : (40/255, 40/255, 40/255, 1)
+                                    font_name : "./font/msjh.ttc"
+                                MDScrollView:
+                                    do_scroll_x : True
+                                    do_scroll_y : True
+                                    canvas.before:
+                                        Color:
+                                            rgba: 1, 1, 1, .3
+                                        Rectangle:
+                                            pos: self.pos
+                                            size: self.size
+                                    GridLayout:
+                                        id : grid
+                                        cols: 1
+                                        size_hint_y: None
+                                        height: self.minimum_height
+                                        MDList:
+                                            id : history_list
+                                
+                                MDRectangleFlatIconButton:
+                                    id : wiki
+                                    size_hint : (1, .1)
+                                    icon : "magnify"
+                                    font_name : "./font/msjh.ttc"
+                                    icon_size : "26sp"
+                                    text : root.Wiki_btn
+                                    font_size : 16
+                                    theme_text_color : "Custom"
+                                    text_color : "black"
+                                    line_color : "red"
+                                    theme_icon_color : "Custom"
+                                    icon_color : "black"
+                                    md_bg_color : "lightblue"
+                                    on_release : root.open_url(self)
+                MDLabel:
+                    id : FPS_label
+                    text: "FPS："
+                    font_name : "./font/msjh.ttc"
+                    halign : "center"
+                    md_bg_color : (40/255, 40/255, 40/255, 1)
+                    size_hint : (.1, .05)
+                    pos_hint : {"center_x": .38, "center_y": .025}
+
+    MDBottomNavigation:
+        id : BottomNavigation
+        size_hint : (1, .1)
+        selected_color_background: "orange"
+        text_color_active: "lightblue"
+        font_name : "./font/msjh.ttc"
+        MDBottomNavigationItem:
+            name : "screen1"
+            text : root.Home_btn
+            icon : "home"
+            on_tab_press : root.switch_tabs(self)
+        MDBottomNavigationItem:
+            name : "screen2"
+            text : root.Choose_btn
+            icon : "image-area-close"
+            on_tab_press : root.switch_tabs(self)
+        MDBottomNavigationItem:
+            name : "screen3"
+            text : root.Camera_btn
+            icon : "camera"
+            on_tab_press : root.switch_tabs(self) 

@@ -1,0 +1,34 @@
+{
+    "status": [
+        "CN",
+        0.5,
+        "1440x900",
+        0
+    ],
+    "UI_language": {
+        "主頁面": "Home",
+        "選擇照片/影片": "Choose Image/Video",
+        "開啟相機": "Open Camera",
+        "設定": "Setting",
+        "語言：": "Language：",
+        "相似度：": "Confidence：",
+        "視窗大小：": "WindowSize：",
+        "相機：": "Camera：",
+        "確定": "Accept",
+        "辨識": "Detect",
+        "我可能看見...?": "I might see ...?",
+        "開啟Wikipedia": "Open Wikipedia",
+        "  我們可以辨識23種動物": "  This system can detect 23 animals.",
+        "使用手冊": "Manual",
+        "返回": "Back"
+    },
+    "Window_size": [
+        "800x600",
+        "1024x768",
+        "1280x768",
+        "1440x900",
+        "1600x900",
+        "1920x1080",
+        "1920x1200"
+    ]
+}
