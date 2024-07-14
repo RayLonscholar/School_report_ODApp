@@ -1,6 +1,5 @@
 # 人工智慧生物辨識系統
 ---
-Show video：https://youtu.be/cpq_wBQcnms
 
 # 🧭功能：
   - 無網路也可以辨識
@@ -9,18 +8,18 @@ Show video：https://youtu.be/cpq_wBQcnms
 
 # 🔎預覽介面：[展示影片](https://youtu.be/cpq_wBQcnms)
 <div style="display: grid; grid-template-columns: 1fr 1fr;">
-    <img alt="home" src="./src/home.png" style="width: 49%; height: auto;" />
-    <img alt="home" src="./src/home2.png" style="width: 49%; height: auto;" />
-    <img alt="home" src="./src/file_management.png" style="width: 49%; height: auto;" />
-    <img alt="home" src="./src/detect.png" style="width: 49%; height: auto;" />
+    <img alt = "home" src = "./src/home.png" style = "width: 49%; height: auto;" />
+    <img alt = "home2" src = "./src/home2.png" style = "width: 49%; height: auto;" />
+    <img alt = "file_management" src = "./src/file_management.png" style = "width: 49%; height: auto;" />
+    <img alt = "detect" src = "./src/detect.png" style = "width: 49%; height: auto;" />
 </div>
 
 # 🏗️整體架構：
-<table>
+<table style = "border: 1px solid black;">
   <tr>
     <th rowspan = 3>系統架構</th>
     <td>程式語言</td>
-    <td><img src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt = "python" width="20" height="20">Python</td>
+    <td><img src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt = "python" width = "20" height = "20">Python</td>
   </tr>
   <tr>
     <td>AI模型</td>
@@ -32,6 +31,6 @@ Show video：https://youtu.be/cpq_wBQcnms
   </tr>
   <tr>
     <th>系統流程圖</th>
-    <td colspan = 2><img src = "./src/chart1.png" alt = flowchart></td>
+    <td colspan = 2><img src = "./src/chart1.png" alt = "flowchart"></td>
   </tr>
 </table>
