@@ -22,7 +22,7 @@
     <td><img src = "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt = "python" width = "20" height = "20">Python</td>
   </tr>
   <tr>
-    <td>AI模型</td>
+    <td>AI模型格式</td>
     <td>YOLOv8</td>
   </tr>
   <tr>
